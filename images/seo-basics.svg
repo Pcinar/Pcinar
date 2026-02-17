@@ -1,1 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-label="SEO basics illustration">
+  <rect width="1200" height="700" fill="#0B1220"/>
+  <circle cx="260" cy="340" r="170" fill="#111827" stroke="#374151" stroke-width="3"/>
+  <rect x="380" y="310" width="610" height="70" rx="16" fill="#111827" stroke="#374151" stroke-width="3"/>
+  <text x="410" y="355" font-size="28" fill="#F9FAFB">meta title • meta description • headings</text>
+</svg>
 
