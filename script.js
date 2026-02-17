@@ -15,21 +15,25 @@ document.addEventListener("DOMContentLoaded", () => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
   }
 
-  function validate() {
-    let ok = true;
-
+  function clearMessages() {
     nameError.textContent = "";
     emailError.textContent = "";
     messageError.textContent = "";
     successBox.hidden = true;
+  }
+
+  function validate() {
+    clearMessages();
+
+    let ok = true;
 
     if (name.value.trim().length < 2) {
-      nameError.textContent = "Please enter your name.";
+      nameError.textContent = "Please enter your name (at least 2 characters).";
       ok = false;
     }
 
     if (!isEmail(email.value.trim())) {
-      emailError.textContent = "Please enter a valid email.";
+      emailError.textContent = "Please enter a valid email address (example: you@example.com).";
       ok = false;
     }
 
@@ -41,12 +45,20 @@ document.addEventListener("DOMContentLoaded", () => {
     return ok;
   }
 
+  // Show errors before submit (as the user types)
+  form.addEventListener("input", () => {
+    // Don’t spam errors on first keystroke if everything is empty.
+    // But if they've started typing, validation feedback is helpful.
+    if (name.value || email.value || message.value) validate();
+  });
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+
     if (!validate()) return;
 
     form.reset();
     successBox.hidden = false;
+    successBox.focus();
   });
 });
-
